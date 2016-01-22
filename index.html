@@ -27,9 +27,9 @@
         </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="MainController">
-        <h1 class="page-header">正在热映</h1>
+        <h1 class="page-header">{{hotMovies.title}}</h1>
         <div class="list-group">
-          <a class="list-group-item" href="#" ng-repeat="item in hotMovies">
+          <a class="list-group-item" href="#" ng-repeat="item in hotMovies.subjects">
             <span class="badge">{{item.rating.average}}</span>
             <div class="media">
               <div class="media-left">
@@ -43,6 +43,7 @@
             </div>
           </a>
         </div>
+        <p class="muted">总共：<span ng-bind="hotMovies.total"></span>条</p>
         <div class="modal fade" ng-class="{in:loading}" ng-hide="!loading" style="display: block;">
           <div class="modal-dialog">
             <div class="modal-content">

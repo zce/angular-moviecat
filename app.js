@@ -2,7 +2,7 @@
  * @Author: iceStone
  * @Date:   2016-01-22 15:57:55
  * @Last Modified by:   iceStone
- * @Last Modified time: 2016-01-22 17:18:33
+ * @Last Modified time: 2016-01-22 17:37:10
  */
 
 'use strict';
@@ -37,7 +37,7 @@ moviecatApp.controller('MainController', ['$scope', '$http', 'ApiAddress', funct
 
   // 将回到函数挂到window对象下
   window.hotMoviesCallback = function(data) {
-    $scope.hotMovies = data.subjects;
+    $scope.hotMovies = data;
     $scope.loading = false;
   };
   $http.jsonp(ApiAddress.hot_movies + '?callback=hotMoviesCallback');
