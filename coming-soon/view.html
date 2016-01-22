@@ -1,0 +1,34 @@
+<h1 class="page-header">{{comingSoonMovies.title}}</h1>
+<div class="list-group">
+  <a class="list-group-item" href="#" ng-repeat="item in comingSoonMovies.subjects">
+    <span class="badge">{{item.rating.average}}</span>
+    <div class="media">
+      <div class="media-left">
+        <img class="media-object" ng-src="{{item.images.small}}" alt="{{item.title}}">
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading">{{item.title}}</h3>
+        <p>导演：<span ng-repeat="director in item.directors">{{director.name}}{{$last?'':'、'}}</span></p>
+        <p>类型：<span>{{item.genres.join('、')}}</span></p>
+      </div>
+    </div>
+  </a>
+</div>
+<p class="muted">总共：<span ng-bind="comingSoonMovies.total"></span>条</p>
+<div class="modal fade" ng-class="{in:loading}" ng-hide="!loading" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">数据加载中..</h4>
+      </div>
+      <div class="modal-body">
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%;">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

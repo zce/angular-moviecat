@@ -2,7 +2,7 @@
  * @Author: iceStone
  * @Date:   2016-01-22 15:57:55
  * @Last Modified by:   iceStone
- * @Last Modified time: 2016-01-22 17:37:10
+ * @Last Modified time: 2016-01-22 21:13:42
  */
 
 'use strict';
@@ -13,32 +13,34 @@
  *
  * Description
  */
-var moviecatApp = angular.module('MoviecatApp', []);
+var app = angular.module('app', ['ngRoute', 'app.hot', 'app.coming-soon', 'app.components.nav']);
 
 /*服务的URL配置*/
-moviecatApp.constant('ApiAddress', {
+app.constant('ApiAddress', {
   hot_movies: 'https://api.douban.com/v2/movie/in_theaters',
+  coming_soon_movies: 'https://api.douban.com/v2/movie/coming_soon'
 });
 
-moviecatApp.controller('MainController', ['$scope', '$http', 'ApiAddress', function($scope, $http, ApiAddress) {
-  // $scope.hotMovies = [];
-
-  // 由于 douban API 不支持 angular.callbacks._0 这种类型的 callback 名称，所以不能直接使用 JSONP
-  // $http({
-  //   method: 'JSONP',
-  //   url: APIURL
-  // }).success(function(data) {
-  //   $scope.hotMovies = data.subjects;
-  // }).error(function(error) {
-  // });
-
-  // 开始时通过loading标识为正在加载
-  $scope.loading = true;
-
-  // 将回到函数挂到window对象下
-  window.hotMoviesCallback = function(data) {
-    $scope.hotMovies = data;
-    $scope.loading = false;
-  };
-  $http.jsonp(ApiAddress.hot_movies + '?callback=hotMoviesCallback');
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider
+    .when('/hot', {
+      controller: 'HotController',
+      templateUrl: 'hot/view.html'
+    })
+    .when('/coming-soon', {
+      controller: 'ComingSoonController',
+      templateUrl: 'coming-soon/view.html'
+    })
+    .otherwise({
+      redirectTo: '/hot'
+    });
 }]);
+
+
+app.controller(
+  'NavController', ['$scope', '$location', function($scope, $location) {
+    $scope.isActive = function(path) {
+      return $location.path().substr(0, path.length) === path;
+    };
+  }]
+);

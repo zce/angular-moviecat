@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="MoviecatApp">
+<html lang="en" ng-app="app">
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
   <title>Movie Cat</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="app.css">
@@ -19,53 +20,36 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-md-2 sidebar">
+        <!-- <ul class="nav nav-sidebar" ng-controller="NavController">
+          <li ng-class="{active:isActive('/hot')}">
+            <a href="#/hot">
+              正在热映<span ng-if="isActive('/hot')" class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li ng-class="{active:isActive('/coming-soon')}">
+            <a href="#/coming-soon">
+              即将上映<span ng-if="isActive('/coming-soon')" class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul> -->
         <ul class="nav nav-sidebar">
-          <li class="active"><a href="#">正在热映 <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">Reports</a></li>
-          <li><a href="#">Analytics</a></li>
-          <li><a href="#">Export</a></li>
+          <li>
+            <a auto="active" href="#/hot">正在热映</a>
+          </li>
+          <li>
+            <a auto="active" href="#/coming-soon">即将上映</a>
+          </li>
         </ul>
       </div>
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="MainController">
-        <h1 class="page-header">{{hotMovies.title}}</h1>
-        <div class="list-group">
-          <a class="list-group-item" href="#" ng-repeat="item in hotMovies.subjects">
-            <span class="badge">{{item.rating.average}}</span>
-            <div class="media">
-              <div class="media-left">
-                <img class="media-object" ng-src="{{item.images.small}}" alt="{{item.title}}">
-              </div>
-              <div class="media-body">
-                <h3 class="media-heading">{{item.title}}</h3>
-                <p>导演：<span ng-repeat="director in item.directors">{{director.name}}{{$last?'':'、'}}</span></p>
-                <p>类型：<span>{{item.genres.join('、')}}</span></p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <p class="muted">总共：<span ng-bind="hotMovies.total"></span>条</p>
-        <div class="modal fade" ng-class="{in:loading}" ng-hide="!loading" style="display: block;">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">数据加载中..</h4>
-              </div>
-              <div class="modal-body">
-                <div class="progress">
-                  <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%;">
-                    <span class="sr-only">Loading...</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view></div>
     </div>
   </div>
   <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
+  <script src="hot/controller.js"></script>
+  <script src="coming-soon/controller.js"></script>
+  <script src="components/nav.js"></script>
 </body>
 
 </html>
