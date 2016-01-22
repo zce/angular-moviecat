@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="MoviecatApp">
 
 <head>
   <meta charset="UTF-8">
@@ -26,58 +26,19 @@
           <li><a href="#">Export</a></li>
         </ul>
       </div>
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="MainController">
         <h1 class="page-header">正在热映</h1>
         <div class="list-group">
-          <a class="list-group-item" href="#">
-            <span class="badge">7.3</span>
+          <a class="list-group-item" href="#" ng-repeat="item in hotMovies">
+            <span class="badge">{{item.rating.average}}</span>
             <div class="media">
               <div class="media-left">
-                <img class="media-object" src="https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p2293954118.jpg" alt="星球大战：原力觉醒">
+                <img class="media-object" src="{{item.images.small}}" alt="{{item.title}}">
               </div>
               <div class="media-body">
-                <h3 class="media-heading">星球大战：原力觉醒</h3>
-                <p>导演：<span>J·J·艾布拉姆斯</span></p>
-                <p>类型：<span>动作、科幻、奇幻</span></p>
-              </div>
-            </div>
-          </a>
-          <a class="list-group-item" href="#">
-            <span class="badge">7.3</span>
-            <div class="media">
-              <div class="media-left">
-                <img class="media-object" src="https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p2293954118.jpg" alt="星球大战：原力觉醒">
-              </div>
-              <div class="media-body">
-                <h3 class="media-heading">星球大战：原力觉醒</h3>
-                <p>导演：<span>J·J·艾布拉姆斯</span></p>
-                <p>类型：<span>动作、科幻、奇幻</span></p>
-              </div>
-            </div>
-          </a>
-          <a class="list-group-item" href="#">
-            <span class="badge">7.3</span>
-            <div class="media">
-              <div class="media-left">
-                <img class="media-object" src="https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p2293954118.jpg" alt="星球大战：原力觉醒">
-              </div>
-              <div class="media-body">
-                <h3 class="media-heading">星球大战：原力觉醒</h3>
-                <p>导演：<span>J·J·艾布拉姆斯</span></p>
-                <p>类型：<span>动作、科幻、奇幻</span></p>
-              </div>
-            </div>
-          </a>
-          <a class="list-group-item" href="#">
-            <span class="badge">7.3</span>
-            <div class="media">
-              <div class="media-left">
-                <img class="media-object" src="https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p2293954118.jpg" alt="星球大战：原力觉醒">
-              </div>
-              <div class="media-body">
-                <h3 class="media-heading">星球大战：原力觉醒</h3>
-                <p>导演：<span>J·J·艾布拉姆斯</span></p>
-                <p>类型：<span>动作、科幻、奇幻</span></p>
+                <h3 class="media-heading">{{item.title}}</h3>
+                <p>导演：<span>{{item.directors[0].name}}</span></p>
+                <p>类型：<span>{{item.genres}}</span></p>
               </div>
             </div>
           </a>
@@ -85,6 +46,8 @@
       </div>
     </div>
   </div>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="app.js"></script>
 </body>
 
 </html>
