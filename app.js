@@ -2,7 +2,7 @@
  * @Author: iceStone
  * @Date:   2016-01-22 15:57:55
  * @Last Modified by:   iceStone
- * @Last Modified time: 2016-01-22 17:07:08
+ * @Last Modified time: 2016-01-22 17:18:33
  */
 
 'use strict';
@@ -32,9 +32,13 @@ moviecatApp.controller('MainController', ['$scope', '$http', 'ApiAddress', funct
   // }).error(function(error) {
   // });
 
+  // 开始时通过loading标识为正在加载
+  $scope.loading = true;
+
   // 将回到函数挂到window对象下
   window.hotMoviesCallback = function(data) {
     $scope.hotMovies = data.subjects;
+    $scope.loading = false;
   };
   $http.jsonp(ApiAddress.hot_movies + '?callback=hotMoviesCallback');
 }]);
