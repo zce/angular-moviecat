@@ -2,7 +2,7 @@
  * @Author: iceStone
  * @Date:   2016-01-22 15:57:55
  * @Last Modified by:   iceStone
- * @Last Modified time: 2016-01-22 21:13:42
+ * @Last Modified time: 2016-01-23 00:52:35
  */
 
 'use strict';
@@ -13,7 +13,7 @@
  *
  * Description
  */
-var app = angular.module('app', ['ngRoute', 'app.hot', 'app.coming-soon', 'app.components.nav']);
+var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'app.hot', 'app.coming-soon', 'app.demo', 'app.components.nav']);
 
 /*服务的URL配置*/
 app.constant('ApiAddress', {
@@ -23,16 +23,20 @@ app.constant('ApiAddress', {
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
-    .when('/hot', {
+    .when('/hot/:page?', {
       controller: 'HotController',
       templateUrl: 'hot/view.html'
     })
-    .when('/coming-soon', {
+    .when('/coming-soon/:page?', {
       controller: 'ComingSoonController',
       templateUrl: 'coming-soon/view.html'
     })
+    .when('/demo/:page?', {
+      controller: 'DemoController',
+      templateUrl: 'demo/view.html'
+    })
     .otherwise({
-      redirectTo: '/hot'
+      // redirectTo: '/hot'
     });
 }]);
 

@@ -14,6 +14,7 @@
     </div>
   </a>
 </div>
+<uib-pager total-items="totalItems" items-per-page="size" align="false" ng-model="currentPage"></uib-pager>
 <p class="muted">总共：<span ng-bind="comingSoonMovies.total"></span>条</p>
 <div class="modal fade" ng-class="{in:loading}" ng-hide="!loading" style="display: block;">
   <div class="modal-dialog">

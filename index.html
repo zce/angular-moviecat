@@ -20,18 +20,6 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-md-2 sidebar">
-        <!-- <ul class="nav nav-sidebar" ng-controller="NavController">
-          <li ng-class="{active:isActive('/hot')}">
-            <a href="#/hot">
-              正在热映<span ng-if="isActive('/hot')" class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li ng-class="{active:isActive('/coming-soon')}">
-            <a href="#/coming-soon">
-              即将上映<span ng-if="isActive('/coming-soon')" class="sr-only">(current)</span>
-            </a>
-          </li>
-        </ul> -->
         <ul class="nav nav-sidebar">
           <li>
             <a auto="active" href="#/hot">正在热映</a>
@@ -46,9 +34,11 @@
   </div>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="app.js"></script>
   <script src="hot/controller.js"></script>
   <script src="coming-soon/controller.js"></script>
+  <script src="demo/controller.js"></script>
   <script src="components/nav.js"></script>
 </body>
 
