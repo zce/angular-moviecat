@@ -37,8 +37,8 @@
               </div>
               <div class="media-body">
                 <h3 class="media-heading">{{item.title}}</h3>
-                <p>导演：<span>{{item.directors[0].name}}</span></p>
-                <p>类型：<span>{{item.genres}}</span></p>
+                <p>导演：<span ng-repeat="director in item.directors">{{director.name}}{{$last?'':'、'}}</span></p>
+                <p>类型：<span>{{item.genres.join('、')}}</span></p>
               </div>
             </div>
           </a>
