@@ -2,7 +2,7 @@
  * @Author: iceStone
  * @Date:   2016-01-22 15:57:55
  * @Last Modified by:   iceStone
- * @Last Modified time: 2016-01-23 11:52:56
+ * @Last Modified time: 2016-01-23 11:55:50
  */
 
 'use strict';
@@ -33,9 +33,9 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'HotController',
       templateUrl: 'hot/view.html'
     })
-    .when('/coming-soon/:page?', {
+    .when('/coming_soon/:page?', {
       controller: 'ComingSoonController',
-      templateUrl: 'coming-soon/view.html'
+      templateUrl: 'coming_soon/view.html'
     })
     .when('/demo/:page?', {
       controller: 'DemoController',
