@@ -2,25 +2,31 @@
  * @Author: iceStone
  * @Date:   2016-01-22 15:57:55
  * @Last Modified by:   iceStone
- * @Last Modified time: 2016-01-23 00:52:35
+ * @Last Modified time: 2016-01-23 11:52:56
  */
 
 'use strict';
 
-
-/**
- * MoviecatApp Module
- *
- * Description
- */
-var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'app.hot', 'app.coming-soon', 'app.demo', 'app.components.nav']);
+var app = angular.module('app', [
+  'ngRoute',
+  'ui.bootstrap',
+  'app.hot',
+  'app.coming_soon',
+  'app.demo',
+  'app.components.nav'
+]);
 
 /*服务的URL配置*/
 app.constant('ApiAddress', {
   hot_movies: 'https://api.douban.com/v2/movie/in_theaters',
-  coming_soon_movies: 'https://api.douban.com/v2/movie/coming_soon'
+  coming_soon_movies: 'https://api.douban.com/v2/movie/coming_soon',
+  top250_movies: 'https://api.douban.com/v2/movie/top250',
+  weekly_movies: 'https://api.douban.com/v2/movie/weekly',
+  us_box_movies: 'https://api.douban.com/v2/movie/us_box',
+  new_movies: 'https://api.douban.com/v2/movie/new_movies'
 });
 
+// 配置路由
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/hot/:page?', {
@@ -36,15 +42,15 @@ app.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'demo/view.html'
     })
     .otherwise({
-      // redirectTo: '/hot'
+      redirectTo: '/hot/1'
     });
 }]);
 
 
-app.controller(
-  'NavController', ['$scope', '$location', function($scope, $location) {
-    $scope.isActive = function(path) {
-      return $location.path().substr(0, path.length) === path;
-    };
-  }]
-);
+// app.controller(
+//   'NavController', ['$scope', '$location', function($scope, $location) {
+//     $scope.isActive = function(path) {
+//       return $location.path().substr(0, path.length) === path;
+//     };
+//   }]
+// );

@@ -2,13 +2,13 @@
  * @Author: iceStone
  * @Date:   2016-01-22 17:46:56
  * @Last Modified by:   iceStone
- * @Last Modified time: 2016-01-23 00:52:09
+ * @Last Modified time: 2016-01-23 11:53:12
  */
 
 'use strict';
 
 (function() {
-  var hotModule = angular.module('app.coming-soon', []);
+  var hotModule = angular.module('app.coming_soon', []);
 
   hotModule.controller('ComingSoonController', ['$scope', '$http', '$route', '$routeParams', 'ApiAddress',
     function($scope, $http, $route, $routeParams, ApiAddress) {
