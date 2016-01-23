@@ -2,7 +2,7 @@
  * @Author: iceStone
  * @Date:   2016-01-22 15:57:55
  * @Last Modified by:   iceStone
- * @Last Modified time: 2016-01-23 12:20:52
+ * @Last Modified time: 2016-01-23 12:52:29
  */
 
 'use strict';
@@ -21,12 +21,6 @@ var app = angular.module('app', [
 app.constant('AppConfig', {
   page_size: 10,
   movies_api: 'https://api.douban.com/v2/movie/',
-  hot_movies: 'https://api.douban.com/v2/movie/in_theaters',
-  coming_soon_movies: 'https://api.douban.com/v2/movie/coming_soon',
-  top250_movies: 'https://api.douban.com/v2/movie/top250',
-  weekly_movies: 'https://api.douban.com/v2/movie/weekly',
-  us_box_movies: 'https://api.douban.com/v2/movie/us_box',
-  new_movies: 'https://api.douban.com/v2/movie/new_movies'
 });
 
 // 配置路由

@@ -2,7 +2,7 @@
  * @Author: iceStone
  * @Date:   2016-01-22 17:46:56
  * @Last Modified by:   iceStone
- * @Last Modified time: 2016-01-23 12:19:43
+ * @Last Modified time: 2016-01-23 12:52:14
  */
 
 'use strict';
@@ -26,11 +26,24 @@
         $scope.totalItems = 100000;
         // 将回到函数挂到window对象下
         window.doubanMovieCallback = function(data) {
-          $scope.movies = data;
+          // console.log(122);
+          if (data.msg) {
+            // 有错误信息产生；
+            $scope.message = data.msg;
+          } else {
+            $scope.message = '';
+            $scope.movies = data;
+            $scope.totalItems = data.total;
+          }
           $scope.loading = false;
-          $scope.totalItems = data.total;
         };
-        $http.jsonp(AppConfig.movies_api + $scope.type + '?callback=doubanMovieCallback&count=' + $scope.size + '&start=' + $scope.start);
+
+        var url = AppConfig.movies_api + $scope.type + '?callback=doubanMovieCallback&count=' + $scope.size + '&start=' + $scope.start;
+        $http.jsonp(url).error(function() {
+          // $scope.message = '没有请求到相应的数据或没有权限！';
+          // $scope.loading = false;
+          // $scope.totalItems = 0;
+        });
 
         $scope.$watch('currentPage', function(now, old) {
           if (now !== old) {
