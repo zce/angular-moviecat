@@ -2,7 +2,7 @@
  * @Author: iceStone
  * @Date:   2016-01-22 15:57:55
  * @Last Modified by:   iceStone
- * @Last Modified time: 2016-01-23 12:52:29
+ * @Last Modified time: 2016-01-23 13:55:32
  */
 
 'use strict';
@@ -22,6 +22,7 @@ app.constant('AppConfig', {
   page_size: 10,
   movies_api: 'https://api.douban.com/v2/movie/',
 });
+
 
 // 配置路由
 app.config(['$routeProvider', function($routeProvider) {
@@ -55,3 +56,12 @@ app.config(['$routeProvider', function($routeProvider) {
 //     };
 //   }]
 // );
+
+
+app.controller('SearchController', ['$scope', '$location', '$routeParams', function($scope, $location, $routeParams) {
+  $scope.text =  '';
+  $scope.search = function() {
+    $location.path('/search');
+    $location.search('q', $scope.text);
+  };
+}]);

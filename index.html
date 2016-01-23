@@ -31,6 +31,19 @@
             <a auto="active" href="#/top250">TOP250</a>
           </li>
         </ul>
+        <ul class="nav nav-sidebar">
+          <li>
+            <form name="search_form" ng-controller="SearchController" ng-submit="search()">
+              <div class="input-group">
+                <input type="search" class="form-control" ng-model="text">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit">Go!</button>
+                </div>
+              </div>
+              <!-- /input-group -->
+            </form>
+          </li>
+        </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view></div>
     </div>

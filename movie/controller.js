@@ -2,7 +2,7 @@
  * @Author: iceStone
  * @Date:   2016-01-22 17:46:56
  * @Last Modified by:   iceStone
- * @Last Modified time: 2016-01-23 12:52:14
+ * @Last Modified time: 2016-01-23 13:53:32
  */
 
 'use strict';
@@ -21,6 +21,12 @@
 
         $scope.currentPage = $routeParams.page || 1;
         $scope.type = $routeParams.type || 'in_theaters';
+        if ($scope.type === 'search') {
+          $scope.type += '?q=' + $routeParams.q + '&';
+          console.log($scope.type);
+        } else {
+          $scope.type += '?';
+        }
 
         $scope.start = $scope.size * ($scope.currentPage - 1);
         $scope.totalItems = 100000;
@@ -38,7 +44,7 @@
           $scope.loading = false;
         };
 
-        var url = AppConfig.movies_api + $scope.type + '?callback=doubanMovieCallback&count=' + $scope.size + '&start=' + $scope.start;
+        var url = AppConfig.movies_api + $scope.type + 'callback=doubanMovieCallback&count=' + $scope.size + '&start=' + $scope.start;
         $http.jsonp(url).error(function() {
           // $scope.message = '没有请求到相应的数据或没有权限！';
           // $scope.loading = false;
