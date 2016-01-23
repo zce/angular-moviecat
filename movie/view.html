@@ -1,6 +1,6 @@
-<h1 class="page-header">{{comingSoonMovies.title}}</h1>
+<h1 class="page-header">{{movies.title}}</h1>
 <div class="list-group">
-  <a class="list-group-item" href="#" ng-repeat="item in comingSoonMovies.subjects">
+  <a class="list-group-item" href="#" ng-repeat="item in movies.subjects">
     <span class="badge">{{item.rating.average}}</span>
     <div class="media">
       <div class="media-left">
@@ -15,7 +15,7 @@
   </a>
 </div>
 <uib-pager total-items="totalItems" items-per-page="size" align="false" ng-model="currentPage"></uib-pager>
-<p class="muted">总共：<span ng-bind="comingSoonMovies.total"></span>条</p>
+<p class="muted">总共：<span ng-bind="totalItems"></span>条</p>
 <div class="modal fade" ng-class="{in:loading}" ng-hide="!loading" style="display: block;">
   <div class="modal-dialog">
     <div class="modal-content">

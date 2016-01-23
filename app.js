@@ -2,7 +2,7 @@
  * @Author: iceStone
  * @Date:   2016-01-22 15:57:55
  * @Last Modified by:   iceStone
- * @Last Modified time: 2016-01-23 11:59:06
+ * @Last Modified time: 2016-01-23 12:20:52
  */
 
 'use strict';
@@ -10,15 +10,17 @@
 var app = angular.module('app', [
   'ngRoute',
   'ui.bootstrap',
-  'app.hot',
-  'app.coming_soon',
-  'app.demo',
+  'app.movie',
+  // 'app.in_theaters',
+  // 'app.coming_soon',
+  // 'app.top',
   'app.components.nav'
 ]);
 
 /*服务的URL配置*/
 app.constant('AppConfig', {
   page_size: 10,
+  movies_api: 'https://api.douban.com/v2/movie/',
   hot_movies: 'https://api.douban.com/v2/movie/in_theaters',
   coming_soon_movies: 'https://api.douban.com/v2/movie/coming_soon',
   top250_movies: 'https://api.douban.com/v2/movie/top250',
@@ -30,20 +32,24 @@ app.constant('AppConfig', {
 // 配置路由
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
-    .when('/hot/:page?', {
-      controller: 'HotController',
-      templateUrl: 'hot/view.html'
+    .when('/:type/:page?', {
+      controller: 'MovieController',
+      templateUrl: 'movie/view.html'
     })
-    .when('/coming_soon/:page?', {
-      controller: 'ComingSoonController',
-      templateUrl: 'coming_soon/view.html'
-    })
-    .when('/demo/:page?', {
-      controller: 'DemoController',
-      templateUrl: 'demo/view.html'
-    })
+    // .when('/in_theaters/:page?', {
+    //   controller: 'InTheatersController',
+    //   templateUrl: 'in_theaters/view.html'
+    // })
+    // .when('/coming_soon/:page?', {
+    //   controller: 'ComingSoonController',
+    //   templateUrl: 'coming_soon/view.html'
+    // })
+    // .when('/top250/:page?', {
+    //   controller: 'TopController',
+    //   templateUrl: 'top250/view.html'
+    // })
     .otherwise({
-      redirectTo: '/hot/1'
+      redirectTo: '/in_theaters/1'
     });
 }]);
 
