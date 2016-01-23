@@ -2,7 +2,7 @@
  * @Author: iceStone
  * @Date:   2016-01-22 15:57:55
  * @Last Modified by:   iceStone
- * @Last Modified time: 2016-01-23 11:55:50
+ * @Last Modified time: 2016-01-23 11:59:06
  */
 
 'use strict';
@@ -17,7 +17,8 @@ var app = angular.module('app', [
 ]);
 
 /*服务的URL配置*/
-app.constant('ApiAddress', {
+app.constant('AppConfig', {
+  page_size: 10,
   hot_movies: 'https://api.douban.com/v2/movie/in_theaters',
   coming_soon_movies: 'https://api.douban.com/v2/movie/coming_soon',
   top250_movies: 'https://api.douban.com/v2/movie/top250',
